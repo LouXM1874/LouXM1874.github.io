@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>爬取豆瓣电影top250 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to my blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="练习用BeautifulSoup爬取豆瓣电影TOP250123456789101112131415161718192021222324252627# --*-- coding : utf-8 --*--# --*-- author : LouXM --*--import requestsfrom bs4 import BeautifulSoupclass Douban:    def __init">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬取豆瓣电影top250">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to my blog.">
+<meta property="og:description" content="练习用BeautifulSoup爬取豆瓣电影TOP250123456789101112131415161718192021222324252627# --*-- coding : utf-8 --*--# --*-- author : LouXM --*--import requestsfrom bs4 import BeautifulSoupclass Douban:    def __init">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-01T11:23:02.000Z">
+<meta property="article:modified_time" content="2020-04-01T11:31:55.810Z">
 <meta property="article:author" content="Louxm">
 <meta name="twitter:card" content="summary">
   
@@ -150,211 +152,193 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-爬取豆瓣电影top250" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      爬取豆瓣电影top250
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" class="archive-article-date">
+
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					  阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+		
+        
+        <a href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" class="archive-article-date">
   	<time datetime="2020-04-01T11:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/">爬取豆瓣电影top250</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="练习用BeautifulSoup爬取豆瓣电影TOP250"><a href="#练习用BeautifulSoup爬取豆瓣电影TOP250" class="headerlink" title="练习用BeautifulSoup爬取豆瓣电影TOP250"></a>练习用BeautifulSoup爬取豆瓣电影TOP250</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --*-- coding : utf-8 --*--</span></span><br><span class="line"><span class="comment"># --*-- author : LouXM --*--</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Douban</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url = <span class="string">'https://movie.douban.com/top250'</span></span><br><span class="line">        self.startnum = []</span><br><span class="line">        <span class="keyword">for</span> start_num <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">251</span>, <span class="number">25</span>):</span><br><span class="line">            self.startnum.append(start_num)</span><br><span class="line">        self.header = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69'</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_top250</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> self.startnum:</span><br><span class="line">            start = str(start)</span><br><span class="line">            html = requests.get(self.url, params=&#123;<span class="string">'start'</span>: start&#125;, headers=self.header)</span><br><span class="line">            soup = BeautifulSoup(html.text, <span class="string">'html.parser'</span>)</span><br><span class="line">            names = soup.select(<span class="string">'#content &gt; div &gt; div.article &gt; ol &gt; li &gt; div &gt; div.info &gt; div.hd &gt; a &gt; span:nth-child(1)'</span>)</span><br><span class="line">            <span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">                print(name.get_text())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">        cls = Douban()</span><br><span class="line">        cls.get_top250()</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>爬取结果：</p>
+<p>肖申克的救赎<br>霸王别姬<br>阿甘正传<br>这个杀手不太冷<br>美丽人生<br>泰坦尼克号<br>千与千寻<br>辛德勒的名单<br>盗梦空间<br>忠犬八公的故事<br>海上钢琴师<br>机器人总动员<br>三傻大闹宝莱坞<br>楚门的世界<br>放牛班的春天<br>星际穿越<br>大话西游之大圣娶亲<br>熔炉<br>疯狂动物城<br>无间道<br>龙猫<br>教父<br>当幸福来敲门<br>怦然心动<br>触不可及<br>蝙蝠侠：黑暗骑士<br>控方证人<br>活着<br>乱世佳人<br>寻梦环游记<br>末代皇帝<br>摔跤吧！爸爸<br>少年派的奇幻漂流<br>指环王3：王者无敌<br>飞屋环游记<br>何以为家<br>十二怒汉<br>鬼子来了<br>天空之城<br>大话西游之月光宝盒<br>哈尔的移动城堡<br>素媛<br>天堂电影院<br>罗马假日<br>闻香识女人<br>辩护人<br>搏击俱乐部<br>哈利·波特与魔法石<br>我不是药神<br>死亡诗社<br>教父2<br>窃听风暴<br>狮子王<br>指环王2：双塔奇兵<br>大闹天宫<br>指环王1：魔戒再现<br>两杆大烟枪<br>美丽心灵<br>饮食男女<br>飞越疯人院<br>猫鼠游戏<br>黑客帝国<br>V字仇杀队<br>钢琴家<br>本杰明·巴顿奇事<br>看不见的客人<br>让子弹飞<br>西西里的美丽传说<br>海豚湾<br>小鞋子<br>拯救大兵瑞恩<br>情书<br>音乐之声<br>穿条纹睡衣的男孩<br>美国往事<br>致命魔术<br>绿皮书<br>七宗罪<br>低俗小说<br>沉默的羔羊<br>海蒂和爷爷<br>蝴蝶效应<br>被嫌弃的松子的一生<br>春光乍泄<br>禁闭岛<br>心灵捕手<br>布达佩斯大饭店<br>阿凡达<br>剪刀手爱德华<br>勇敢的心<br>摩登时代<br>天使爱美丽<br>加勒比海盗<br>喜剧之王<br>致命ID<br>断背山<br>杀人回忆<br>幽灵公主<br>狩猎<br>入殓师<br>阳光灿烂的日子<br>请以你的名字呼唤我<br>重庆森林<br>第六感<br>哈利·波特与死亡圣器(下)<br>小森林 夏秋篇<br>7号房的礼物<br>消失的爱人<br>红辣椒<br>爱在黎明破晓前<br>玛丽和马克思<br>小森林 冬春篇<br>侧耳倾听<br>一一<br>告白<br>大鱼<br>唐伯虎点秋香<br>阳光姐妹淘<br>蝙蝠侠：黑暗骑士崛起<br>射雕英雄传之东成西就<br>倩女幽魂<br>超脱<br>甜蜜蜜<br>驯龙高手<br>萤火之森<br>恐怖直播<br>幸福终点站<br>超能陆战队<br>菊次郎的夏天<br>无人知晓<br>爱在日落黄昏时<br>借东西的小人阿莉埃蒂<br>神偷奶爸<br>怪兽电力公司<br>完美的世界<br>玩具总动员3<br>风之谷<br>血战钢锯岭<br>上帝之城<br>傲慢与偏见<br>时空恋旅人<br>电锯惊魂<br>功夫<br>教父3<br>喜宴<br>谍影重重3<br>英雄本色<br>岁月神偷<br>被解救的姜戈<br>七武士<br>天书奇谭<br>哪吒闹海<br>疯狂原始人<br>人生果实<br>我是山姆<br>心迷宫<br>纵横四海<br>三块广告牌<br>萤火虫之墓<br>真爱至上<br>头号玩家<br>达拉斯买家俱乐部<br>荒蛮故事<br>东邪西毒<br>爆裂鼓手<br>记忆碎片<br>贫民窟的百万富翁<br>釜山行<br>黑天鹅<br>花样年华<br>你的名字。<br>卢旺达饭店<br>忠犬八公物语<br>头脑特工队<br>模仿游戏<br>黑客帝国3：矩阵革命<br>一个叫欧维的男人决定去死<br>雨人<br>你看起来好像很好吃<br>哈利·波特与阿兹卡班的囚徒<br>无敌破坏王<br>未麻的部屋<br>恋恋笔记本<br>冰川时代<br>哈利·波特与密室<br>海街日记<br>新世界<br>海边的曼彻斯特<br>二十二<br>虎口脱险<br>房间<br>恐怖游轮<br>雨中曲<br>人工智能<br>魔女宅急便<br>惊魂记<br>奇迹男孩<br>疯狂的石头<br>海洋<br>罗生门<br>终结者2：审判日<br>燃情岁月<br>爱在午夜降临前<br>魂断蓝桥<br>初恋这件小事<br>穿越时空的少女<br>小偷家族<br>可可西里<br>绿里奇迹<br>2001太空漫游<br>完美陌生人<br>牯岭街少年杀人事件<br>无耻混蛋<br>阿飞正传<br>新龙门客栈<br>香水<br>源代码<br>城市之光<br>谍影重重2<br>谍影重重<br>青蛇<br>猜火车<br>战争之王<br>地球上的星星<br>血钻<br>朗读者<br>浪潮<br>色，戒<br>遗愿清单<br>步履不停<br>彗星来的那一夜<br>大佛普拉斯<br>疯狂的麦克斯4：狂暴之路<br>小萝莉的猴神大叔<br>再次出发之纽约遇见你<br>聚焦<br>驴得水<br>追随<br>东京物语<br>一次别离<br>黑鹰坠落<br>千钧一发<br>我爱你<br>发条橙<br>四个春天<br>网络谜踪<br>E.T. 外星人<br>撞车<br>变脸<br>九品芝麻官</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://b23.tv/BV1j4411c7ny" target="_blank" rel="noopener">https://b23.tv/BV1j4411c7ny</a></p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-03-17T13:43:06.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">图片测试</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">图片测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#练习用BeautifulSoup爬取豆瓣电影TOP250"><span class="toc-number">1.</span> <span class="toc-text">练习用BeautifulSoup爬取豆瓣电影TOP250</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E6%9C%BA%E8%AF%95%E5%A4%8D%E8%AF%95%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E6%9C%BA%E8%AF%95%E5%A4%8D%E8%AF%95%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/">机试复试之进制转换问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/09/%E4%BD%BF%E7%94%A8Typora%E5%86%99hexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-03-09T01:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/09/%E4%BD%BF%E7%94%A8Typora%E5%86%99hexo%E5%8D%9A%E5%AE%A2/">使用Typora写hexo博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/%E9%87%8D%E8%AF%BB%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/" class="archive-article-date">
-  	<time datetime="2020-03-06T11:46:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/%E9%87%8D%E8%AF%BB%E4%B8%89%E5%9B%BD%E6%9C%89%E6%84%9F/">重读三国有感</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-02-02T10:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/02/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/02/hello-world/" class="archive-article-date">
-  	<time datetime="2020-02-02T10:41:20.958Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -377,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
