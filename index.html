@@ -175,39 +175,22 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="scrapy框架"><a href="#scrapy框架" class="headerlink" title="scrapy框架"></a>scrapy框架</h2><p><img src="/2020/04/08/scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/Screenshot_2020-04-08-13-11-34-704_tv.danmaku.bil.jpg" alt="Screenshot_2020-04-08-13-11-34-704_tv.danmaku.bil"></p>
-<h1 id="“5-2”结构"><a href="#“5-2”结构" class="headerlink" title="“5+2”结构"></a>“5+2”结构</h1><ol>
-<li>Scrapy组件<pre><code>a. 主体部分
-    i. 引擎(Scrapy)：处理整个系统的数据流处理，触发事务(框架核心)
-    ii. 调度器(Scheduler)：
-        1) 用来接受引擎发过来的请求, 压入队列中, 并在引擎再次请求的时候返回。
-        2) 类似一个URL的优先队列, 由它决定下一个要抓取的网址, 同时去除重复的网址
-    iii. 下载器(Downloader)
-        1) 用于下载网页内容, 并将网页内容返回给爬虫（spiders）
-        2) Scrapy下载器是建立在twisted这个高效的异步模型上的
-    iv. 爬虫(Spiders)
-        1) 爬虫从特定的网页中提取自己需要的信息, 即所谓的实体(Item)
-        2) 用户也可以从中提取出链接,让Scrapy继续抓取下一个页面
-    v. 项目管道(Pipeline)
-        1) 负责处理爬虫从网页中抽取的实体
-        2) 功能：持久化实体、验证实体的有效性、清除不需要的信息。
-        3) 当页面被爬虫解析后，将被发送到项目管道，并经过几个特定的次序处理数据。
-b. 中间件
-    i. 下载器中间件(Downloader Middlewares)
-        1) 介于Scrapy引擎和下载器之间的框架
-        2) 处理Scrapy引擎与下载器之间的请求及响应
-    ii. 爬虫中间件(Spider Middlewares)
-        1) 介于Scrapy引擎和爬虫之间的框架
-        2) 处理蜘蛛的响应输入和请求输出。
-    iii. 调度中间件(Scheduler Middewares)
-        1) 介于Scrapy引擎和调度之间的中间件
-        2) 从Scrapy引擎发送到调度的请求和响应。</code></pre></li>
-<li>运行流程<pre><code>a. 引擎从调度器中取出一个链接(URL)用于接下来的抓取
-b. 引擎把URL封装成一个请求(Request)传给下载器
-c. 下载器从Internet中把资源下载下来，并封装成应答包(Response)
-d. 爬虫解析Response
-    i. 解析出实体（Item）,则交给实体管道进行进一步的处理
-    ii. 解析出的是链接（URL）,则把URL交给调度器等待抓取</code></pre></li>
-</ol>
+<h1 id="“5-2”结构"><a href="#“5-2”结构" class="headerlink" title="“5+2”结构"></a>“5+2”结构</h1><p>Engine模块(不需要用户修改)：控制所有模块之间的数据流；根据条件触发事件</p>
+<p>Downloader模块（不需要用户修改）：根据请求下载网页</p>
+<p>Scheduler模块（不需要用户修改）：对所有爬取请求进行调度管理</p>
+<p>Downloader Middleware中间键</p>
+<p>目的：实施Engine、Scheduler和Downloader之间进行用户可配置的控制功能：修改、丢弃、新增请求或响应</p>
+<p>用户可以编写配置代码</p>
+<p>Spider模块（需要用户编写配置代码）</p>
+<p>解析Downloader返回的响应（Response）产生爬取项（scraped item）</p>
+<p>产生额外的爬取请求（Request）</p>
+<p>Item Pipelines模块（需要用户编写配置代码）以流水线方式处理Spider产生的爬取项</p>
+<p>由一组操作顺序组成，类似流水线，每个操作是一个Item Pipeline类型</p>
+<p>可能操作包括：清理、检验和查重爬取项中的HTML数据、将数据存储到数据库</p>
+<p>Spider Middleware中间键</p>
+<p>目的：对请求和爬取项的再处理</p>
+<p>功能：修改、丢弃、新增请求或爬取项</p>
+<p>用户可以编写配置代码</p>
 <h1 id="实操练习"><a href="#实操练习" class="headerlink" title="实操练习"></a>实操练习</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A51jobSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">'51job'</span>   <span class="comment"># 爬虫名</span></span><br><span class="line">    allowed_domains = [<span class="string">'51job.com'</span>]   <span class="comment"># 允许采集的域名</span></span><br><span class="line">    start_urls = [<span class="string">'https://search.51job.com/list/050000,000000,0000,00,9,99,Python,2,1.html'</span>]  <span class="comment"># 开始采集的网站</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 解析响应数据  提取数据  或者网址等</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        selectors = response.xpath(<span class="string">'//div[@class="el"]'</span>)</span><br><span class="line">        <span class="keyword">for</span> selector <span class="keyword">in</span> selectors:</span><br><span class="line">            job_name = selector.xpath(<span class="string">'./p/span/a/@title'</span>).get()</span><br><span class="line">            company_name = selector.xpath(<span class="string">'./span[@class="t2"]/a/@title'</span>).get()</span><br><span class="line">            work_location = selector.xpath(<span class="string">'./span[@class="t3"]/text()'</span>).get()</span><br><span class="line">            work_salary = selector.xpath(<span class="string">'./span[@class="t4"]/text()'</span>).get()</span><br><span class="line">            print(job_name, company_name, work_location, work_salary)</span><br><span class="line">        <span class="comment"># 翻页操作</span></span><br><span class="line">        next_page = response.xpath(<span class="string">'//li[@class="bk"]/a/@href'</span>).get()</span><br><span class="line">        <span class="keyword">if</span> next_page:</span><br><span class="line">            <span class="comment"># print(next_page)</span></span><br><span class="line">            <span class="keyword">yield</span> scrapy.Request(next_page, callback=self.parse)  <span class="comment"># callback是回调函数，将请求得到的响应交给自己处理</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h1><p><img src="/2020/04/08/scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/2020-04-08_133437.bmp" alt="2020-04-08_133437"></p>
