@@ -6,17 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>matplotlib库学习1 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to my blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="什么是matplotlib库？Matplotlib 是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形 。 通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等。  matplotlib 库实操12345678910111213141516171819202122232425262728293">
+<meta property="og:type" content="article">
+<meta property="og:title" content="matplotlib库学习1">
+<meta property="og:url" content="http://yoursite.com/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to my blog.">
+<meta property="og:description" content="什么是matplotlib库？Matplotlib 是一个 Python 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形 。 通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等。  matplotlib 库实操12345678910111213141516171819202122232425262728293">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/t1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/t2.png">
+<meta property="article:published_time" content="2020-04-09T05:31:05.000Z">
+<meta property="article:modified_time" content="2020-04-09T05:57:15.907Z">
 <meta property="article:author" content="Louxm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/t1.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +155,213 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-matplotlib库学习1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      matplotlib库学习1
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
+
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					  阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+		
+        
+        <a href="/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
   	<time datetime="2020-04-09T05:31:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-09</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/">matplotlib库学习1</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是matplotlib库？"><a href="#什么是matplotlib库？" class="headerlink" title="什么是matplotlib库？"></a>什么是matplotlib库？</h2><p>Matplotlib 是一个 <a href="https://baike.baidu.com/item/Python" target="_blank" rel="noopener">Python</a> 的 2D绘图库，它以各种硬拷贝格式和跨平台的交互式环境生成出版质量级别的图形 。</p>
+<p>通过 Matplotlib，开发者可以仅需要几行代码，便可以生成绘图，直方图，功率谱，条形图，错误图，散点图等。</p>
+<hr>
+<h2 id="matplotlib-库实操"><a href="#matplotlib-库实操" class="headerlink" title="matplotlib 库实操"></a>matplotlib 库实操</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/9 8:42</span></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改字体，因为默认情况下matplotlib不支持中文</span></span><br><span class="line">font = &#123;<span class="string">'family'</span>: <span class="string">'MicroSoft YaHei'</span>,</span><br><span class="line">        <span class="string">'weight'</span>: <span class="string">'bold'</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">matplotlib.rc(<span class="string">"font"</span>, **font)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># x = range(2, 26, 2)</span></span><br><span class="line"><span class="string">x = range(0, 120)</span></span><br><span class="line"><span class="string"># y = [15, 13, 14, 5, 17, 20, 25, 26, 26, 27, 22, 18]</span></span><br><span class="line"><span class="string">y = [random.randint(20, 35) for i in range(120)]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 设置图片大小</span></span><br><span class="line"><span class="string">plt.figure(figsize=(20, 8), dpi=80)   # 宽20，高8，dpi是每英寸点的个数</span></span><br><span class="line"><span class="string"># 绘图</span></span><br><span class="line"><span class="string">plt.plot(x, y)</span></span><br><span class="line"><span class="string"># 绘制x轴的刻度</span></span><br><span class="line"><span class="string"># plt.xticks(range(2, 25))</span></span><br><span class="line"><span class="string"># plt.xticks(range(0, 121, 4))</span></span><br><span class="line"><span class="string">_xtick_lables = ["10点&#123;&#125;分".format(i) for i in range(60)]</span></span><br><span class="line"><span class="string">_xtick_lables += ["11点&#123;&#125;分".format(i) for i in range(60)]</span></span><br><span class="line"><span class="string">plt.xticks(list(x)[::3], _xtick_lables[::3], rotation=45)   # [::3]列表的步长取3， rotation旋转</span></span><br><span class="line"><span class="string"># plt.yticks(range(min(y), max(y)+1))</span></span><br><span class="line"><span class="string"># 添加描述信息</span></span><br><span class="line"><span class="string">plt.xlabel("时间")</span></span><br><span class="line"><span class="string">plt.ylabel("温度 单位(℃)")</span></span><br><span class="line"><span class="string">plt.title("10点到12点每分钟的气温变化情况")</span></span><br><span class="line"><span class="string"># 图片保存</span></span><br><span class="line"><span class="string">plt.savefig("./t1.png")</span></span><br><span class="line"><span class="string"># 展示</span></span><br><span class="line"><span class="string">plt.show()</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 一张图中画两条折线对比</span></span><br><span class="line">y_1 = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">y_2 = [<span class="number">1</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">2</span>]</span><br><span class="line">x = range(<span class="number">11</span>, <span class="number">31</span>)</span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line">plt.plot(x, y_1, label=<span class="string">"自己"</span>, color=<span class="string">"orange"</span>, linestyle=<span class="string">':'</span>, linewidth=<span class="number">3</span>)   <span class="comment"># 添加参数</span></span><br><span class="line">plt.plot(x, y_2, label=<span class="string">"同桌"</span>, color=<span class="string">"cyan"</span>, linestyle=<span class="string">'-.'</span>, linewidth=<span class="number">2</span>)    <span class="comment"># 添加参数</span></span><br><span class="line">_xtick_lables = [<span class="string">"&#123;&#125;岁"</span>.format(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">11</span>, <span class="number">31</span>)]</span><br><span class="line">plt.xticks(x, _xtick_lables)</span><br><span class="line">plt.yticks(range(<span class="number">0</span>, <span class="number">10</span>))</span><br><span class="line">plt.xlabel(<span class="string">"年龄"</span>)</span><br><span class="line">plt.ylabel(<span class="string">"11~30岁每年交女盆友的个数  单位(个)"</span>)</span><br><span class="line">plt.title(<span class="string">"渣男成长路线"</span>)</span><br><span class="line"><span class="comment"># 绘制网格</span></span><br><span class="line">plt.grid(alpha=<span class="number">0.4</span>)  <span class="comment"># 设置透明度</span></span><br><span class="line"><span class="comment"># 添加图例</span></span><br><span class="line">plt.legend(loc=<span class="string">"best"</span>)</span><br><span class="line">plt.savefig(<span class="string">"./t2.png"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p><img src="/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/t1.png" alt="t1"></p>
+<p><img src="/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/t2.png" alt="t2"></p>
+<hr>
+<h2 id="总结与心得"><a href="#总结与心得" class="headerlink" title="总结与心得"></a>总结与心得</h2><p>1.绘制折线图——plt.plot()</p>
+<p>2.设置图片大小和分辨率——plt.figure()</p>
+<p>3.图片保存——plt.savefig()</p>
+<p>4.设置x,y轴的刻度和字符串描述信息—–plt.xticks()/plt.yticks()</p>
+<p>5.解决刻度稀疏与密集的问题—–plt.xticks()/plt.yticks()</p>
+<p>6.设置x轴，y轴和标题的描述信息—–plt.xlabel()/ylabel()/title()</p>
+<p>7.设置字体，解决不能显示中文的问题—-修改matplotlib.rc</p>
+<p>8.在一张图上绘制多个图形—–多次plt.plot()即可</p>
+<p>9.添加图例—–plt.legend()</p>
+<p>10.养成查看源码的习惯有很大帮助，快捷键—–Ctrl+B</p>
+<p>11.画图让数据更直观的显示出来，一点一点来，把图片展示的尽量美观一点</p>
+<p>12.主意单词拼写，尤其是没有快捷生成的单词，比如plt.plot()参数中label我写了好几遍lable，查了半天没能解决，结果发现是拼写错误，淦</p>
+<p>13.可变参数</p>
+<p>如果我们不确定要往函数中传入多少个参数，或者我们想往函数中以列表和元组的形式传参数时，那就使要用<em>args；<br>        如果我们不知道要往函数中传入多少个关键词参数，或者想传入字典的值作为关键词参数时，那就要使用*</em>kwargs</p>
+<hr>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1hx411d7jb?p=8" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hx411d7jb?p=8</a></p>
+<hr>
+<p>:)加油</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/09/matplotlib%E5%BA%93%E5%AD%A6%E4%B9%A01/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-08T05:06:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/08/scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">scrapy框架学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/scrapy%E6%A1%86%E6%9E%B6%E5%AD%A6%E4%B9%A0/">scrapy框架学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#什么是matplotlib库？"><span class="toc-number">1.</span> <span class="toc-text">什么是matplotlib库？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#matplotlib-库实操"><span class="toc-number">2.</span> <span class="toc-text">matplotlib 库实操</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">3.</span> <span class="toc-text">结果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结与心得"><span class="toc-number">4.</span> <span class="toc-text">总结与心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/06/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C2/" class="archive-article-date">
-  	<time datetime="2020-04-06T02:43:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/06/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C2/">词云制作2</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-05T14:18:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/">xpath学习</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/" class="archive-article-date">
-  	<time datetime="2020-04-04T08:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/">词云制作1</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/03/%E7%88%AC%E5%8F%96%E5%89%8D%E7%A8%8B%E6%97%A0%E5%BF%A7/" class="archive-article-date">
-  	<time datetime="2020-04-03T09:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/03/%E7%88%AC%E5%8F%96%E5%89%8D%E7%A8%8B%E6%97%A0%E5%BF%A7/">爬取前程无忧</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" class="archive-article-date">
-  	<time datetime="2020-04-01T11:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/">爬取豆瓣电影top250</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-03-17T13:43:06.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">图片测试</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E6%9C%BA%E8%AF%95%E5%A4%8D%E8%AF%95%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-03-16T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E6%9C%BA%E8%AF%95%E5%A4%8D%E8%AF%95%E4%B9%8B%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E9%97%AE%E9%A2%98/">机试复试之进制转换问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/09/%E4%BD%BF%E7%94%A8Typora%E5%86%99hexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-03-09T01:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/09/%E4%BD%BF%E7%94%A8Typora%E5%86%99hexo%E5%8D%9A%E5%AE%A2/">使用Typora写hexo博客</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +385,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
