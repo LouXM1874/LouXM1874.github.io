@@ -152,6 +152,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pandas库学习2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/">pandas库学习2</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+        
+        <a href="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/" class="archive-article-date">
+  	<time datetime="2020-04-16T07:58:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实操练习"><a href="#实操练习" class="headerlink" title="实操练习"></a>实操练习</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/14 19:13</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 数据合并   join按照行索引进行操作，merge按照列索引进行操作</span></span><br><span class="line">df1 = pd.DataFrame(np.ones((<span class="number">2</span>, <span class="number">4</span>)), index=list(<span class="string">"AB"</span>), columns=list(<span class="string">"abcd"</span>))</span><br><span class="line">print(df1)</span><br><span class="line">df2 = pd.DataFrame(np.zeros((<span class="number">3</span>, <span class="number">3</span>)), index=list(<span class="string">"ABC"</span>), columns=list(<span class="string">"xyz"</span>))</span><br><span class="line">print(df2)</span><br><span class="line">print(df2.join(df1))   <span class="comment"># join默认是左连接， 有缺地方为nan  进行join操作必须有行索引是一样的</span></span><br><span class="line">df3 = pd.DataFrame(np.arange(<span class="number">9</span>).reshape((<span class="number">3</span>, <span class="number">3</span>)), columns=list(<span class="string">"fax"</span>))</span><br><span class="line">print(df3)</span><br><span class="line">print(df1.merge(df3, on=<span class="string">"a"</span>))  <span class="comment"># 按照列a中值相同的 行 进行合并，内连接  (交集)</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(df1.merge(df3, on=<span class="string">"a"</span>, how=<span class="string">"outer"</span>))   <span class="comment"># 外连接  以df3为准  df1中没有df3的用nan填充  (并集)</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(df1.merge(df3, on=<span class="string">"a"</span>, how=<span class="string">"left"</span>))      <span class="comment"># 左连接   以df1为准  df3中没有df1的用nan填充</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(df1.merge(df3, on=<span class="string">"a"</span>, how=<span class="string">"right"</span>))  <span class="comment"># 右连接   以df3为准  df1中没有df3的用nan填充</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(df1[<span class="string">"c"</span>], type(df1[<span class="string">"c"</span>]))  <span class="comment"># 取一个方括号是series类型</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">print(df1[[<span class="string">"c"</span>]], type(df1[[<span class="string">"c"</span>]]))   <span class="comment"># 取两个方括号是dataframe类型</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 获取索引</span></span><br><span class="line">print(df1.index)</span><br><span class="line"><span class="comment"># 更改索引</span></span><br><span class="line">df1.index = [<span class="string">"s"</span>, <span class="string">"m"</span>]</span><br><span class="line">print(df1.index)</span><br><span class="line">print(df1.reindex([<span class="string">"a"</span>, <span class="string">"b"</span>]))   <span class="comment"># 这样会选两行index命名为a,b如果原来df1中的index有a,b则用原来的值赋给df1，没有就填充nan，这样并不会改变原来的df1</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 指定某一列作为index</span></span><br><span class="line">print(df1.set_index(<span class="string">"a"</span>, drop=<span class="literal">False</span>))  <span class="comment"># drop=False是不把a这一列删掉</span></span><br><span class="line"><span class="comment"># 返回index的唯一值</span></span><br><span class="line">print(df1[<span class="string">"a"</span>].unique())</span><br><span class="line"><span class="comment"># 复合索引</span></span><br><span class="line">print(df1.set_index([<span class="string">"a"</span>, <span class="string">"b"</span>]))</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">a = pd.DataFrame(&#123;<span class="string">'a'</span>: range(<span class="number">7</span>), <span class="string">'b'</span>: range(<span class="number">7</span>, <span class="number">0</span>, <span class="number">-1</span>), <span class="string">'c'</span>: [<span class="string">'one'</span>, <span class="string">'one'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'two'</span>, <span class="string">'two'</span>, <span class="string">'two'</span>], <span class="string">'d'</span>: list(<span class="string">"hjklmno"</span>)&#125;)</span><br><span class="line">print(a)</span><br><span class="line">b = a.set_index([<span class="string">"c"</span>, <span class="string">"d"</span>])</span><br><span class="line">print(b)</span><br><span class="line">c = b[<span class="string">"a"</span>]   <span class="comment"># c是series类型</span></span><br><span class="line">print(c)</span><br><span class="line"><span class="comment"># Series类型下取复合索引取1这个值</span></span><br><span class="line">print(c[<span class="string">"one"</span>][<span class="string">"j"</span>])</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">d = a.set_index([<span class="string">"d"</span>, <span class="string">"c"</span>])[<span class="string">"a"</span>]</span><br><span class="line">print(d)</span><br><span class="line"><span class="comment"># 取1这个值</span></span><br><span class="line">print(d.swaplevel()[<span class="string">"one"</span>][<span class="string">"j"</span>])    <span class="comment"># swaplevel()从内层取值</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line"><span class="comment"># DataFrame类型下复合索引取值</span></span><br><span class="line">print(b.loc[<span class="string">"one"</span>].loc[<span class="string">"j"</span>])</span><br><span class="line">print(b.swaplevel().loc[<span class="string">"j"</span>])</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><pre><code>a    b    c    d</code></pre><p>A  1.0  1.0  1.0  1.0<br>B  1.0  1.0  1.0  1.0<br>     x    y    z<br>A  0.0  0.0  0.0<br>B  0.0  0.0  0.0<br>C  0.0  0.0  0.0<br>     x    y    z    a    b    c    d<br>A  0.0  0.0  0.0  1.0  1.0  1.0  1.0<br>B  0.0  0.0  0.0  1.0  1.0  1.0  1.0<br>C  0.0  0.0  0.0  NaN  NaN  NaN  NaN<br>   f  a  x<br>0  0  1  2<br>1  3  4  5<br>2  6  7  8<br>     a    b    c    d  f  x<br>0  1.0  1.0  1.0  1.0  0  2<br>1  1.0  1.0  1.0  1.0  0  2</p>
+<hr>
+<pre><code>a    b    c    d  f  x</code></pre><p>0  1.0  1.0  1.0  1.0  0  2<br>1  1.0  1.0  1.0  1.0  0  2<br>2  4.0  NaN  NaN  NaN  3  5<br>3  7.0  NaN  NaN  NaN  6  8</p>
+<hr>
+<pre><code>a    b    c    d  f  x</code></pre><p>0  1.0  1.0  1.0  1.0  0  2<br>1  1.0  1.0  1.0  1.0  0  2</p>
+<hr>
+<pre><code>a    b    c    d  f  x</code></pre><p>0  1.0  1.0  1.0  1.0  0  2<br>1  1.0  1.0  1.0  1.0  0  2<br>2  4.0  NaN  NaN  NaN  3  5<br>3  7.0  NaN  NaN  NaN  6  8</p>
+<hr>
+<p>A    1.0<br>B    1.0<br>Name: c, dtype: float64 &lt;class ‘pandas.core.series.Series’&gt;</p>
+<hr>
+<pre><code>c</code></pre><p>A  1.0<br>B  1.0 &lt;class ‘pandas.core.frame.DataFrame’&gt;</p>
+<hr>
+<p>Index([‘A’, ‘B’], dtype=’object’)<br>Index([‘s’, ‘m’], dtype=’object’)<br>    a   b   c   d<br>a NaN NaN NaN NaN<br>b NaN NaN NaN NaN</p>
+<hr>
+<pre><code>a    b    c    d</code></pre><p>a<br>1.0  1.0  1.0  1.0  1.0<br>1.0  1.0  1.0  1.0  1.0<br>[1.]<br>           c    d<br>a   b<br>1.0 1.0  1.0  1.0<br>    1.0  1.0  1.0</p>
+<hr>
+<p>   a  b    c  d<br>0  0  7  one  h<br>1  1  6  one  j<br>2  2  5  one  k<br>3  3  4  two  l<br>4  4  3  two  m<br>5  5  2  two  n<br>6  6  1  two  o<br>       a  b<br>c   d<br>one h  0  7<br>    j  1  6<br>    k  2  5<br>two l  3  4<br>    m  4  3<br>    n  5  2<br>    o  6  1<br>c    d<br>one  h    0<br>     j    1<br>     k    2<br>two  l    3<br>     m    4<br>     n    5<br>     o    6<br>Name: a, dtype: int64<br>1</p>
+<hr>
+<p>d  c<br>h  one    0<br>j  one    1<br>k  one    2<br>l  two    3<br>m  two    4<br>n  two    5<br>o  two    6<br>Name: a, dtype: int64<br>1</p>
+<hr>
+<p>a    1<br>b    6<br>Name: j, dtype: int64<br>     a  b<br>c<br>one  1  6</p>
+<h2 id="体会总结"><a href="#体会总结" class="headerlink" title="体会总结"></a>体会总结</h2><p>这一块感觉跟数据库的操作很像。练手实战的东西不是很多，只是一些基础知识，后面想多进行实战练习，加强对知识的理解。</p>
+<p><img src="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/QQ%E5%9B%BE%E7%89%8720200416160355.jpg" alt="QQ图片20200416160355"></p>
+<p><img src="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/QQ%E5%9B%BE%E7%89%8720200416160349.jpg" alt="QQ图片20200416160349"></p>
+<p><img src="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/QQ%E5%9B%BE%E7%89%8720200416160322.jpg" alt="QQ图片20200416160322"></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1hx411d7jb/?p=36&amp;t=2823" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hx411d7jb/?p=36&amp;t=2823</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-warshall算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -917,74 +1009,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-词云制作1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/">词云制作1</a>
-    </h1>
-  
-
-		<!--显示阅读次数-->
-		
-        
-        <a href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/" class="archive-article-date">
-  	<time datetime="2020-04-04T08:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="举国悼念"><a href="#举国悼念" class="headerlink" title="举国悼念"></a>举国悼念</h2><p>今天是2020-04-04，清明节。为表达全国各族人民对抗击新冠肺炎疫情斗争牺牲烈士和逝世同胞的深切哀悼，国务院决定，2020年4月4日举行全国性哀悼活动。在此期间，全国和驻外使领馆下半旗志哀，全国停止公共娱乐活动。4月4日10时起，全国人民默哀3分钟，汽车、火车、舰船鸣笛，防空警报鸣响。向英雄们致敬！</p>
-<h2 id="词云制作"><a href="#词云制作" class="headerlink" title="词云制作"></a>词云制作</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/4 14:26</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</span><br><span class="line"><span class="keyword">import</span> PIL.Image <span class="keyword">as</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">r"C:\Users\10200\Desktop\rip.txt"</span>, <span class="string">"r"</span>)</span><br><span class="line">t = f.read()</span><br><span class="line">f.close()</span><br><span class="line">ls = jieba.lcut(t)</span><br><span class="line">txt = <span class="string">" "</span>.join(ls)</span><br><span class="line">mk = np.array(Image.open(<span class="string">r"F:\zihaowordcloud-master\code\chinamap.png"</span>))</span><br><span class="line">w = WordCloud(font_path=<span class="string">"msyh.ttc"</span>,\</span><br><span class="line">              mask=mk,\</span><br><span class="line">              width=<span class="number">1000</span>, height=<span class="number">700</span>, background_color=<span class="string">"white"</span>,\</span><br><span class="line">              )</span><br><span class="line">w.generate(txt)</span><br><span class="line">w.to_file(<span class="string">"growcloud.png"</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p><img src="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/growcloud.png" alt="growcloud"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/">展开全文 >></a>
         </p>
       
 
