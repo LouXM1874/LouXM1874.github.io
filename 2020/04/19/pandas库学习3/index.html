@@ -6,17 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | Hexo</title>
+  <title>pandas库学习3 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to my blog.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/page/2/index.html">
+  <meta name="description" content="引言为了获取相应数据，注册了kaggle的账号，踩了一点坑。注册半天没有验证码，这个问题可以通过下载一个谷歌助手插件解决。详细解决办法或者过程看参考文献第一条。 实操练习1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pandas库学习3">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="Welcome to my blog.">
+<meta property="og:description" content="引言为了获取相应数据，注册了kaggle的账号，踩了一点坑。注册半天没有验证码，这个问题可以通过下载一个谷歌助手插件解决。详细解决办法或者过程看参考文献第一条。 实操练习1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/count.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/month_call.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/month_different_call.png">
+<meta property="article:published_time" content="2020-04-19T09:02:08.000Z">
+<meta property="article:modified_time" content="2020-04-19T09:14:09.690Z">
 <meta property="article:author" content="Louxm">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/count.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,133 +156,196 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-pandas库学习3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      pandas库学习3
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+			<br/>
+			<a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+			<span class="icon-sort"></span>
+			<span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+					  阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+			</span>
+			</a>
+		
+        
+        <a href="/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/" class="archive-article-date">
+  	<time datetime="2020-04-19T09:02:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>为了获取相应数据，注册了kaggle的账号，踩了一点坑。注册半天没有验证码，这个问题可以通过下载一个谷歌助手插件解决。详细解决办法或者过程看参考文献第一条。</p>
+<h2 id="实操练习"><a href="#实操练习" class="headerlink" title="实操练习"></a>实操练习</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/17 15:21</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib</span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</span><br><span class="line">font = &#123;<span class="string">'family'</span>: <span class="string">'Microsoft YaHei'</span>,</span><br><span class="line">        <span class="string">'weight'</span>: <span class="string">'bold'</span>&#125;</span><br><span class="line">matplotlib.rc(<span class="string">"font"</span>, **font)</span><br><span class="line"></span><br><span class="line"><span class="comment"># df = pd.read_csv(r"F:\excel表\directory.csv")</span></span><br><span class="line"><span class="comment"># print(df.head(1))</span></span><br><span class="line"><span class="comment"># print(df.info())</span></span><br><span class="line"><span class="comment"># grouped = df.groupby(by="Country")</span></span><br><span class="line"><span class="comment"># print(grouped)</span></span><br><span class="line"><span class="comment"># 统计中国每个省店铺的数量</span></span><br><span class="line"><span class="comment"># china_data = df[df["Country"] == "CN"]</span></span><br><span class="line"><span class="comment"># grouped = china_data.groupby(by="State/Province").count()["Brand"]</span></span><br><span class="line"><span class="comment"># print(grouped)</span></span><br><span class="line"><span class="comment"># china_data = df[df["Country"] == "CN"]</span></span><br><span class="line"><span class="comment"># grouped = china_data.groupby(by="City").count()["Brand"].sort_values(ascending=False)[:25]</span></span><br><span class="line"><span class="comment"># _x = grouped.index</span></span><br><span class="line"><span class="comment"># _y = grouped.values</span></span><br><span class="line"><span class="comment"># plt.figure(figsize=(16, 8), dpi=80)</span></span><br><span class="line"><span class="comment"># plt.bar(range(len(_x)), _y, width=0.3, color="orange")</span></span><br><span class="line"><span class="comment"># plt.xticks(range(len(_x)), _x)</span></span><br><span class="line"><span class="comment"># plt.savefig("./count.png")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment"># 数据按照多个条件进行分组</span></span><br><span class="line"><span class="comment"># 取["Brand"]这一列，结果是Series, 而[["Brand"]]结果是DataFrame，然后按照Country和State/Province进行分组  三种方法</span></span><br><span class="line"><span class="comment"># grouped = df[["Brand"]].groupby(by=[df["Country"], df["State/Province"]]).count()</span></span><br><span class="line"><span class="comment"># grouped = df.groupby(by=[df["Country"], df["State/Province"]])[["Brand"]].count()</span></span><br><span class="line"><span class="comment"># grouped = df.groupby(by=[df["Country"], df["State/Province"]]).count()[["Brand"]]</span></span><br><span class="line"><span class="comment"># print(grouped)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">data1 = df.groupby(by="Country").count()["Brand"].sort_values(ascending=False)[:10]</span></span><br><span class="line"><span class="string">_x = data1.index</span></span><br><span class="line"><span class="string">_y = data1.values</span></span><br><span class="line"><span class="string"># 画图</span></span><br><span class="line"><span class="string">plt.figure(figsize=(16, 8), dpi=80)</span></span><br><span class="line"><span class="string">plt.bar(range(len(_x)), _y)</span></span><br><span class="line"><span class="string">plt.xticks(range(len(_x)), _x)</span></span><br><span class="line"><span class="string">plt.savefig("./top10.png")</span></span><br><span class="line"><span class="string">plt.show()</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">df = pd.read_csv(r"F:\excel表\book_tags.csv")</span></span><br><span class="line"><span class="string"># print(df.head(10))</span></span><br><span class="line"><span class="string"># print(df.info())</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># df = pd.read_csv(r"F:\excel表\911.csv")</span></span><br><span class="line"><span class="comment"># print(df.head(5))</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># print(df.info())</span></span><br><span class="line"><span class="string"># 统计不同类别紧急电话的个数</span></span><br><span class="line"><span class="string"># 获取分类</span></span><br><span class="line"><span class="string"># print(df["title"].str.split(":"))</span></span><br><span class="line"><span class="string">temp_list = df["title"].str.split(":").tolist()  # series类型转换成列表用tolist(),dataframe转换成列表用to_list()</span></span><br><span class="line"><span class="string">cate_list = list(set([i[0] for i in temp_list]))   # 转换成列表，set去重</span></span><br><span class="line"><span class="string">print(cate_list)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 构造全为0的数组</span></span><br><span class="line"><span class="string">zeros_df = pd.DataFrame(np.zeros((df.shape[0], len(cate_list))), columns=cate_list)  # np.zeros()只能有一个参数，要是非有两个可以穿一个元组</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 赋值</span></span><br><span class="line"><span class="string">for cate in cate_list:</span></span><br><span class="line"><span class="string">    zeros_df[cate][df["title"].str.contains(cate)] = 1   # 往zeros_df[cate]这一列里进行赋值,也就是说有Traffic, Traffic=1, 有EMS， EMS=1， 有Fire， Fire=1</span></span><br><span class="line"><span class="string">    # break</span></span><br><span class="line"><span class="string"># print(zeros_df)</span></span><br><span class="line"><span class="string">sum_ret = zeros_df.sum(axis=0)  # 统计三种类别电话的个数，求和</span></span><br><span class="line"><span class="string">print(sum_ret)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># temp_list = df["title"].str.split(":").tolist()  # series类型转换成列表用tolist(),dataframe转换成列表用to_list()</span></span><br><span class="line"><span class="comment"># cate_list = [i[0] for i in temp_list]</span></span><br><span class="line"><span class="comment"># df["cate"] = pd.DataFrame(np.array(cate_list).reshape((df.shape[0], 1)))  # 先将cate_list转化成一个一维数组，然后再转化成一个dataframe  添加一列然后cate然后用groupby分组求和</span></span><br><span class="line"><span class="comment"># 往df中添加一列cate</span></span><br><span class="line"><span class="comment"># print(df.head(5))</span></span><br><span class="line"><span class="comment"># print(df.groupby(by="cate").count()["title"])</span></span><br><span class="line"><span class="comment"># pandas时间序列</span></span><br><span class="line"><span class="comment"># 生成一段时间范围</span></span><br><span class="line"><span class="comment"># print(pd.date_range(start="20200131", end="20200419", freq="10D"))</span></span><br><span class="line"><span class="comment"># print(pd.date_range(start="20200131", periods=10, freq="D"))  # periods表示生成10个</span></span><br><span class="line"><span class="comment"># pandas重采样  可以升频也可以降频，比如原来是按照年-月-日，时 来划分的，升频可以按照天来划分</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">df = pd.read_csv(r"F:\excel表\911.csv")</span></span><br><span class="line"><span class="string"># print(df.head(5))</span></span><br><span class="line"><span class="string">df["timeStamp"] = pd.to_datetime(df["timeStamp"])  # 把string类型转化成pandas的datetime类型</span></span><br><span class="line"><span class="string">df.set_index("timeStamp", inplace=True)  # 原地修改把行索引改为timeStamp</span></span><br><span class="line"><span class="string"># print(df.head(5))</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 统计不同月份紧急电话次数的变化情况</span></span><br><span class="line"><span class="string">count_by_month = df.resample("M").count()["title"]</span></span><br><span class="line"><span class="string">print(count_by_month)</span></span><br><span class="line"><span class="string"># 画图</span></span><br><span class="line"><span class="string">_x = count_by_month.index</span></span><br><span class="line"><span class="string">_y = count_by_month.values</span></span><br><span class="line"><span class="string"># 把时间做一下处理</span></span><br><span class="line"><span class="string">_x = [i.strftime("%Y%m%d") for i in _x]</span></span><br><span class="line"><span class="string">plt.figure(figsize=(16, 8), dpi=80)</span></span><br><span class="line"><span class="string">plt.plot(range(len(_x)), _y)    # 画折线图</span></span><br><span class="line"><span class="string">plt.xticks(range(len(_x)), _x, rotation=45)</span></span><br><span class="line"><span class="string">plt.savefig("./month_call.png")</span></span><br><span class="line"><span class="string">plt.show()</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 统计不同月份不同类型的紧急电话变化情况</span></span><br><span class="line">df = pd.read_csv(<span class="string">r"F:\excel表\911.csv"</span>)</span><br><span class="line">df[<span class="string">"timeStamp"</span>] = pd.to_datetime(df[<span class="string">"timeStamp"</span>])  <span class="comment"># 把string类型转化成pandas的datetime类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置添加列表示分类</span></span><br><span class="line">temp_list = df[<span class="string">"title"</span>].str.split(<span class="string">":"</span>).tolist()  <span class="comment"># series类型转换成列表用tolist(),dataframe转换成列表用to_list()</span></span><br><span class="line">cate_list = [i[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> temp_list]</span><br><span class="line">df[<span class="string">"cate"</span>] = pd.DataFrame(np.array(cate_list).reshape((df.shape[<span class="number">0</span>], <span class="number">1</span>)))  <span class="comment"># 这里索引还是0-n</span></span><br><span class="line">df.set_index(<span class="string">"timeStamp"</span>, inplace=<span class="literal">True</span>)  <span class="comment"># 原地修改把行索引改为timeStamp</span></span><br><span class="line"><span class="comment"># 在一张背景上画三个图</span></span><br><span class="line">plt.figure(figsize=(<span class="number">16</span>, <span class="number">8</span>), dpi=<span class="number">80</span>)</span><br><span class="line"><span class="comment"># 分组</span></span><br><span class="line"><span class="keyword">for</span> group_name, group_data <span class="keyword">in</span> df.groupby(by=<span class="string">"cate"</span>):</span><br><span class="line">    <span class="comment"># 对不同类型都进行绘图</span></span><br><span class="line">    count_by_month = group_data.resample(<span class="string">"M"</span>).count()[<span class="string">"title"</span>]</span><br><span class="line">    <span class="comment"># print(count_by_month)</span></span><br><span class="line">    <span class="comment"># 画图</span></span><br><span class="line">    _x = count_by_month.index</span><br><span class="line">    _y = count_by_month.values</span><br><span class="line">    <span class="comment"># 把时间做一下处理</span></span><br><span class="line">    _x = [i.strftime(<span class="string">"%Y%m%d"</span>) <span class="keyword">for</span> i <span class="keyword">in</span> _x]</span><br><span class="line">    plt.plot(range(len(_x)), _y, label=group_name)  <span class="comment"># 画折线图</span></span><br><span class="line"></span><br><span class="line">plt.xticks(range(len(_x)), _x, rotation=<span class="number">45</span>)</span><br><span class="line">plt.legend(loc=<span class="string">"best"</span>)</span><br><span class="line">plt.savefig(<span class="string">"./month_different_call.png"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p><img src="/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/count.png" alt="count"></p>
+<p><img src="/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/month_call.png" alt="month_call"></p>
+<p><img src="/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/month_different_call.png" alt="month_different_call"></p>
+<h2 id="总结心得"><a href="#总结心得" class="headerlink" title="总结心得"></a>总结心得</h2><p>终于有数据进行实操了，但是感觉其实理解的并不是很透彻，还需要再看看，再练练。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.jianshu.com/p/47aeb966623e" target="_blank" rel="noopener">https://www.jianshu.com/p/47aeb966623e</a></p>
+<p><a href="https://www.bilibili.com/video/BV1hx411d7jb?p=38" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hx411d7jb?p=38</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-05T14:18:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/">xpath学习</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/19/pandas%E5%BA%93%E5%AD%A6%E4%B9%A03/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/" class="archive-article-date">
-  	<time datetime="2020-04-04T08:30:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/16/pandas%E5%BA%93%E5%AD%A6%E4%B9%A02/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">pandas库学习2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/04/%E8%AF%8D%E4%BA%91%E5%88%B6%E4%BD%9C1/">词云制作1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实操练习"><span class="toc-number">2.</span> <span class="toc-text">实操练习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结果展示"><span class="toc-number">3.</span> <span class="toc-text">结果展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结心得"><span class="toc-number">4.</span> <span class="toc-text">总结心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">5.</span> <span class="toc-text">参考文献</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/03/%E7%88%AC%E5%8F%96%E5%89%8D%E7%A8%8B%E6%97%A0%E5%BF%A7/" class="archive-article-date">
-  	<time datetime="2020-04-03T09:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/03/%E7%88%AC%E5%8F%96%E5%89%8D%E7%A8%8B%E6%97%A0%E5%BF%A7/">爬取前程无忧</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" class="archive-article-date">
-  	<time datetime="2020-04-01T11:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/">爬取豆瓣电影top250</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/04/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/04/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -300,8 +369,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

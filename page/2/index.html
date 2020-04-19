@@ -152,6 +152,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-xpath学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/">xpath学习</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+        
+        <a href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-04-05T14:18:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="xpath学习"><a href="#xpath学习" class="headerlink" title="xpath学习"></a>xpath学习</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/5 20:00</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">from</span> lxml <span class="keyword">import</span> etree    <span class="comment"># lxml 是专门用来解析xml语言的库  etree 指的是elements tree</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">url = 'https://www.pearvideo.com/category_8'</span></span><br><span class="line"><span class="string">res = requests.get(url)</span></span><br><span class="line"><span class="string"># print(res.text)</span></span><br><span class="line"><span class="string">html = etree.HTML(res.text)</span></span><br><span class="line"><span class="string"># title = html.xpath('/html/head/title/text()')   # 直接copy xpath  绝对路径  /从顶级节点出发进行提取</span></span><br><span class="line"><span class="string">title = html.xpath('//title/text()')    # 自己写，相对路径  //提取任意子节点</span></span><br><span class="line"><span class="string">print(title)</span></span><br><span class="line"><span class="string">title1 = html.xpath('//a[@class="menu"]/text()')    # @提取属性</span></span><br><span class="line"><span class="string">print(title1)</span></span><br><span class="line"><span class="string">title2 = html.xpath('//a[@class="menu" and @href="live"]/text()')   # 属性之间可以进行运算，比如and</span></span><br><span class="line"><span class="string">print(title2)</span></span><br><span class="line"><span class="string">text = html.xpath('//ul[@id="listvideoListUl"]/li[1]//div[@class="vervideo-title"]/text()')  # 使用[]指定提取第几个</span></span><br><span class="line"><span class="string">print(text)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">for li in html.xpath('//ul[@id="listvideoListUl"]/li'):</span></span><br><span class="line"><span class="string">    print('https://www.pearvideo.com/' + li.xpath('./div/a/@href')[0])   # 二次提取  .表示从当前节点下进行提取  li.xpath获取的是一个列表，可在后面加一个[0]来获取列表里得值</span></span><br><span class="line"><span class="string"># print(text1)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">resp = requests.get('https://www.pearvideo.com/video_1666970')</span></span><br><span class="line"><span class="string">t = re.findall('srcUrl="(.*?)"', resp.text, re.S)[0]   # .任意一个字符  *零个或多个字符  ？非贪婪匹配   re.S 忽略换行符的干扰</span></span><br><span class="line"><span class="string">print(t)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">reponse = requests.get('https://video.pearvideo.com/mp4/adshort/20200405/cont-1666970-15064956_adpkg-ad_hd.mp4')</span></span><br><span class="line"><span class="string"># print(reponse)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">with open("a.mp4", mode='wb') as f:</span></span><br><span class="line"><span class="string">    f.write(reponse.content)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""整合"""</span></span><br><span class="line"></span><br><span class="line">res = requests.get(<span class="string">'https://www.pearvideo.com/category_8'</span>)</span><br><span class="line">html = etree.HTML(res.text)</span><br><span class="line"><span class="keyword">for</span> li <span class="keyword">in</span> html.xpath(<span class="string">'//ul[@id="listvideoListUl"]/li'</span>):</span><br><span class="line">    url = <span class="string">'https://www.pearvideo.com/'</span> + li.xpath(<span class="string">'./div/a/@href'</span>)[<span class="number">0</span>]</span><br><span class="line">    resp = requests.get(url)</span><br><span class="line">    video = re.findall(<span class="string">'srcUrl="(.*?)"'</span>, resp.text, re.S)[<span class="number">0</span>]  <span class="comment"># 这里用正则是因为这里的网页不能用xpath提取</span></span><br><span class="line">    <span class="comment"># title = re.findall('&lt;title&gt;(.*?)&lt;/title&gt;', resp.text, re.S)[0]</span></span><br><span class="line">    <span class="comment"># new_title = title.strip('')</span></span><br><span class="line">    <span class="comment"># print(video, title)</span></span><br><span class="line">    title = video.split(<span class="string">'/'</span>)[<span class="number">-1</span>]  <span class="comment"># 还是这个方法好用</span></span><br><span class="line">    response = requests.get(video)</span><br><span class="line">    <span class="keyword">with</span> open(title + <span class="string">'.mp4'</span>, mode=<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(response.content)</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h2><p><img src="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/2020-04-05_223634.bmp" alt="2020-04-05_223634"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>今天对xpath有了进一步的了解。scrapy框架下三种解析网页办法：正则，xpath，css的select。正则我学了好几遍，在爬取猫眼的时候遇到了瓶颈，用bs4也是，可能猫眼不让我爬吧，哈哈哈[狗头]，应该是哪里有问题，还待解决，现在没时间，等有时间再去爬猫眼吧。最后，xpath对网页的内容进行批量爬取解析我感觉比正则好用，它适合处理层级结构明显的数据，而正则表达式可以处理任何格式的字符串文档，是基于文本特征来匹配，查找指定数据的。至于好不好用还是得看场合的呀！：）</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV14b411T7xQ?t=4664" target="_blank" rel="noopener">https://www.bilibili.com/video/BV14b411T7xQ?t=4664</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/05/xpath%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-词云制作1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
