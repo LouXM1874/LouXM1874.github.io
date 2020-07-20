@@ -152,6 +152,166 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-pandas库学习1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/pandas%E5%BA%93%E5%AD%A6%E4%B9%A01/">pandas库学习1</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+        
+        <a href="/2020/04/13/pandas%E5%BA%93%E5%AD%A6%E4%B9%A01/" class="archive-article-date">
+  	<time datetime="2020-04-13T08:51:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是pandas库？"><a href="#什么是pandas库？" class="headerlink" title="什么是pandas库？"></a>什么是pandas库？</h2><p>Pandas 是python的一个数据分析包，最初由AQR Capital Management于2008年4月开发，并于2009年底开源出来，目前由专注于Python数据包开发的PyData开发team继续开发和维护，属于PyData项目的一部分。Pandas最初被作为金融数据分析工具而开发出来，因此，pandas为时间序列分析提供了很好的支持。 Pandas的名称来自于面板数据（panel data）和python数据分析（data analysis）。panel data是经济学中关于多维数据集的一个术语，在Pandas中也提供了panel的数据类型。</p>
+<p>Series：一维数组，与Numpy中的一维array类似。二者与Python基本的数据结构List也很相近。Series如今能保存不同种数据类型，字符串、boolean值、数字等都能保存在Series中。</p>
+<p>Time- Series：以时间为索引的Series。</p>
+<p>DataFrame：二维的表格型数据结构。很多功能与R中的data.frame类似。可以将DataFrame理解为Series的容器。</p>
+<p>Panel ：三维的数组，可以理解为DataFrame的容器。</p>
+<p>Panel4D：是像Panel一样的4维数据容器。</p>
+<p>PanelND：拥有factory集合，可以创建像Panel4D一样N维命名容器的模块。</p>
+<h2 id="实操练习"><a href="#实操练习" class="headerlink" title="实操练习"></a>实操练习</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/13 9:07</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">t = pd.Series([1, 2, 31, 12, 3, 4])   # Series 一维，带标签的数组(标签即索引)  不指定索引默认是从0开始</span></span><br><span class="line"><span class="string">print(t)</span></span><br><span class="line"><span class="string">print(type(t))</span></span><br><span class="line"><span class="string">t1 = pd.Series([1, 23, 2, 5, 3], index=list("abcde"))   # 指定索引</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">temp_dict = &#123;"name": "孙笨", "age": "21", "tel": "12345"&#125;</span></span><br><span class="line"><span class="string">t2 = pd.Series(temp_dict)</span></span><br><span class="line"><span class="string">print(t2)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># Series的切片和索引</span></span><br><span class="line"><span class="string">print(t2["name"], t2[0])    # t2["name"] &lt;=&gt; t2[0]</span></span><br><span class="line"><span class="string">print(t2["age"], t2[1])</span></span><br><span class="line"><span class="string">print(t2["tel"], t2[2])</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># 取前两行</span></span><br><span class="line"><span class="string">print(t2[:2])</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># 取不连续的两行</span></span><br><span class="line"><span class="string">print(t2[[0, 2]])</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># Series 的两个属性，index 和 value</span></span><br><span class="line"><span class="string"># print(t2.index, t2.values)</span></span><br><span class="line"><span class="string">for i in t2.index:</span></span><br><span class="line"><span class="string">    print(i)</span></span><br><span class="line"><span class="string">print(type(t2.index))</span></span><br><span class="line"><span class="string">print(len(t2.index))</span></span><br><span class="line"><span class="string">print(list(t2.index)[:2])</span></span><br><span class="line"><span class="string">print(type(t2.values))   # numpy.ndarray类型</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># DataFrame  二维</span></span><br><span class="line"><span class="string">df = pd.DataFrame(np.arange(100).reshape(10, 10), index=list("abcdefghij"), columns=list("LMNOPQRSTR"))   # index是行索引，columns是列索引</span></span><br><span class="line"><span class="string">print(df)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># DataFrame中还可以用排序的方法</span></span><br><span class="line"><span class="string"># print(df.sort_index(ascending=False))</span></span><br><span class="line"><span class="string">print(df.sort_values(by="L", ascending=False))    # 注意by后面跟的应该是主键</span></span><br><span class="line"><span class="string"># 取前5行</span></span><br><span class="line"><span class="string">print(df[:5])     # 方括号写数组表示取行，对行进行操作</span></span><br><span class="line"><span class="string"># 取键为R的列</span></span><br><span class="line"><span class="string">print(df["R"])    # 方括号写字符串表示取列，队列进行操作</span></span><br><span class="line"><span class="string"># 同时取行和列</span></span><br><span class="line"><span class="string">print(df[:5]["R"])</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># df.loc通过标签索引行数据   df.iloc通过位置获取行数据</span></span><br><span class="line"><span class="string">print(df.loc["a", "S"])   # numpy.int32类型</span></span><br><span class="line"><span class="string">print(df.loc["a", :])    # 取a这一行，前面是键索引，后面是数</span></span><br><span class="line"><span class="string">print(df.loc[:, "L"])    # 取L这一列，前面是行索引，后面是数</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># 取多行多列</span></span><br><span class="line"><span class="string">print(df.loc[["a", "c"], :])    # 取ac行的所有列</span></span><br><span class="line"><span class="string">print(df.loc[:, ["L", "M"]])    # 取LM列的所有行</span></span><br><span class="line"><span class="string">print(df.loc[["a", "b"], ["M", "S"]])   # 取ab行的MS列</span></span><br><span class="line"><span class="string"># 通过iloc来取</span></span><br><span class="line"><span class="string">print(df.iloc[[0, 1], [1, 7]])</span></span><br><span class="line"><span class="string"># bool索引</span></span><br><span class="line"><span class="string">print(df[(df["M"] &gt; 50) &amp; (df["M"] &lt; 60)])</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># DataFrame也可以传字典</span></span><br><span class="line"><span class="string">dict1 = &#123;"name": ["王花花", "李哈哈"], "age": [20, 21], "sex": ["f", "m"]&#125;</span></span><br><span class="line"><span class="string">df1 = pd.DataFrame(dict1, index=list("ab"))   # 列索引默认为键, 行索引可以自己指定，不然默认是从1开始</span></span><br><span class="line"><span class="string">print(df1)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">print(df1.head(1))</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">print(df1.tail(1))</span></span><br><span class="line"><span class="string">print(df1.info())</span></span><br><span class="line"><span class="string">print(df1.describe())</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># pandas缺失值的处理</span></span><br><span class="line">df = pd.DataFrame(np.arange(<span class="number">12</span>).reshape(<span class="number">3</span>, <span class="number">4</span>), index=list(<span class="string">"abc"</span>), columns=list(<span class="string">"WXYZ"</span>))</span><br><span class="line">print(df)</span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">df.iloc[<span class="number">1</span>:,:<span class="number">2</span>] = np.nan    <span class="comment"># DataFrame自动会转成float类型</span></span><br><span class="line">print(df)</span><br><span class="line">print(pd.isnull(df))     <span class="comment"># 打印出是nan的位置</span></span><br><span class="line">print(pd.notnull(df))    <span class="comment"># 打印出不是nan的位置</span></span><br><span class="line">print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line"><span class="comment"># print(df.dropna(axis=0, how="any", inplace=False))   # 删除存在nan的行   any表示存在即删除， all表示都为nan才删除  inplace表示原地修改</span></span><br><span class="line"><span class="comment"># print("*"*20)</span></span><br><span class="line"><span class="comment"># 填充</span></span><br><span class="line"><span class="comment"># print(df.fillna(df.mean()))   # 把nan的位置替换为每一列的均值</span></span><br><span class="line"><span class="comment"># 单独对0这一列进行填充</span></span><br><span class="line">df[<span class="string">"W"</span>] = df[<span class="string">"W"</span>].fillna(df[<span class="string">"W"</span>].mean())</span><br><span class="line">print(df)</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p>W  X   Y   Z<br>a  0  1   2   3<br>b  4  5   6   7<br>c  8  9  10  11</p>
+<hr>
+<pre><code>W    X   Y   Z</code></pre><p>a  0.0  1.0   2   3<br>b  NaN  NaN   6   7<br>c  NaN  NaN  10  11<br>       W      X      Y      Z<br>a  False  False  False  False<br>b   True   True  False  False<br>c   True   True  False  False<br>       W      X     Y     Z<br>a   True   True  True  True<br>b  False  False  True  True<br>c  False  False  True  True</p>
+<hr>
+<pre><code>W    X   Y   Z</code></pre><p>a  0.0  1.0   2   3<br>b  0.0  NaN   6   7<br>c  0.0  NaN  10  11</p>
+<h2 id="总结体会"><a href="#总结体会" class="headerlink" title="总结体会"></a>总结体会</h2><p>1.pandas的索引和切片</p>
+<p>2.缺失值的处理  a&gt; 删除   b&gt;填充</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1hx411d7jb?p=28" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hx411d7jb?p=28</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/13/pandas%E5%BA%93%E5%AD%A6%E4%B9%A01/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-numpy库学习2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/12/numpy%E5%BA%93%E5%AD%A6%E4%B9%A02/">numpy库学习2</a>
+    </h1>
+  
+
+		<!--显示阅读次数-->
+		
+        
+        <a href="/2020/04/12/numpy%E5%BA%93%E5%AD%A6%E4%B9%A02/" class="archive-article-date">
+  	<time datetime="2020-04-12T03:46:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="实操练习"><a href="#实操练习" class="headerlink" title="实操练习"></a>实操练习</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># encoding: utf-8</span></span><br><span class="line"><span class="comment"># Author  : LouXM</span></span><br><span class="line"><span class="comment"># Datetime: 2020/4/12 9:13</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">t1 = np.arange(24).reshape(4, 6).astype("float")</span></span><br><span class="line"><span class="string"># print(t1)</span></span><br><span class="line"><span class="string">t1[[2],[2]] = np.nan</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">print(t1.sum(axis=0))   # 每列之和</span></span><br><span class="line"><span class="string">print(t1.mean(axis=0))    # 每列的均值   还可以用print(np.median(t1, axis=0))求均值</span></span><br><span class="line"><span class="string">print(t1.max(axis=1))   # 每行的最大值</span></span><br><span class="line"><span class="string">print(np.ptp(t1, axis=0))   # 每列的极值(最大值最小值的差)</span></span><br><span class="line"><span class="string">print(t1.std(axis=0))    # 每列的标准差</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 数组拼接</span></span><br><span class="line"><span class="string">t1 = np.arange(0,12).reshape(2,6)</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print("^"*20)</span></span><br><span class="line"><span class="string">t2 = np.arange(12,24).reshape(2,6)</span></span><br><span class="line"><span class="string">print(t2)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">print(np.vstack((t1, t2)))  # 垂直拼接</span></span><br><span class="line"><span class="string">print(np.hstack((t1, t2)))   # 水平拼接</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">t1[[0,1],:] = t1[[1,0],:]   # 行交换</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">t2[:,[1,2]] = t2[:,[2,1]]   # 列交换</span></span><br><span class="line"><span class="string">print(t2)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># bool索引</span></span><br><span class="line"><span class="string">t1[t1 &gt; 10] = 10   # 把大于10的变成10</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string"># 三元运算符</span></span><br><span class="line"><span class="string">t1 = np.where(t1 &gt; 5, 20, 0)    # 把大于5的位置的值换成20，其余换成0</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print("*"*20)</span></span><br><span class="line"><span class="string">print(t1.clip(0, 5))   # 把小于0的改为0，大于0的改为5</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 创建全为零的数组</span></span><br><span class="line"><span class="string">t1 = np.zeros((2, 3))</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string"># 创建全为1的数组</span></span><br><span class="line"><span class="string">t2 = np.ones((3, 4))</span></span><br><span class="line"><span class="string">print(t2)</span></span><br><span class="line"><span class="string"># 创建对角线为1的正方形数组</span></span><br><span class="line"><span class="string">t3 = np.eye(5)</span></span><br><span class="line"><span class="string">print(t3)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># 获取最大值最小值的位置</span></span><br><span class="line"><span class="string">t1 = np.arange(12).reshape(3, 4)</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print(np.argmax(t1, axis=0))   # 每列最大值的位置</span></span><br><span class="line"><span class="string">print(np.argmin(t1, axis=1))   # 每行最小值的位置</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"># 把等于5的位置的值换成-1</span></span><br><span class="line"><span class="string">t1[t1 == 5] = -1</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">print(np.argmin(t1, axis=0))  # 每列最小值的位置</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string"># numpy生成随机数数组</span></span><br><span class="line"><span class="string">np.random.seed(10)   # 随机种子，生成的随机数每次都一样</span></span><br><span class="line"><span class="string">t1 = np.random.randint(10, 20, (3, 4))   # 随机整数，范围从10到20，生成3*4的数组</span></span><br><span class="line"><span class="string">print(t1)</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 把数组中的nan替换成均值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fill_ndarray</span><span class="params">(t1)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(t1.shape[<span class="number">1</span>]):   <span class="comment"># shape[0]代表行数， shape[1]代表列数</span></span><br><span class="line">        temp_col = t1[:,i]   <span class="comment"># 选中当前这一列</span></span><br><span class="line">        nan_nums = np.count_nonzero(temp_col != temp_col)   <span class="comment"># 统计nan的个数</span></span><br><span class="line">        <span class="keyword">if</span> nan_nums != <span class="number">0</span>:   <span class="comment"># 说明当前列有nan</span></span><br><span class="line">            temp_not_nan_col = temp_col[temp_col == temp_col]    <span class="comment"># 筛选出每一列不为nan的数</span></span><br><span class="line">            <span class="comment"># temp_not_nan_col.mean()   # 求出去除nan后的每列的均值</span></span><br><span class="line">            temp_col[np.isnan(temp_col)] = temp_not_nan_col.mean()    <span class="comment"># 选中当前为nan的位置并把值赋为均值</span></span><br><span class="line">    <span class="keyword">return</span> t1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    t1 = np.arange(<span class="number">24</span>).reshape(<span class="number">4</span>, <span class="number">6</span>).astype(<span class="string">"float"</span>)</span><br><span class="line">    print(t1)</span><br><span class="line">    print(<span class="string">"*"</span>*<span class="number">20</span>)</span><br><span class="line">    t1[[<span class="number">2</span>], [<span class="number">2</span>]] = np.nan</span><br><span class="line">    print(t1)</span><br><span class="line">    print(<span class="string">"+"</span>*<span class="number">20</span>)</span><br><span class="line">    t2 = fill_ndarray(t1)</span><br><span class="line">    print(t2)</span><br></pre></td></tr></table></figure>
+
+<h2 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h2><p>[[ 0.  1.  2.  3.  4.  5.]<br> [ 6.  7.  8.  9. 10. 11.]<br> [12. 13. 14. 15. 16. 17.]<br> [18. 19. 20. 21. 22. 23.]]</p>
+<hr>
+<p>[[ 0.  1.  2.  3.  4.  5.]<br> [ 6.  7.  8.  9. 10. 11.]<br> [12. 13. nan 15. 16. 17.]<br> [18. 19. 20. 21. 22. 23.]]<br>++++++++++++++++++++<br>[[ 0.  1.  2.  3.  4.  5.]<br> [ 6.  7.  8.  9. 10. 11.]<br> [12. 13. 10. 15. 16. 17.]<br> [18. 19. 20. 21. 22. 23.]]</p>
+<h2 id="总结体会"><a href="#总结体会" class="headerlink" title="总结体会"></a>总结体会</h2><p>1.假如是三维数组t.shape[0]代表块数，t.shape[1]代表行数，t.shape[2]代表列数.(shape[0]表示最外围的数组的维数，shape[1]表示次外围的数组的维数，数字不断增大，维数由外到内。)</p>
+<p>2.在numpy中，clip函数的原型为clip(self, min=None, max=None, out=None)，意思是把小于min的数全部置换为min，大于max的数全部置换为max，在[min,max]之间的数则不变。out返回的是一个数组，这个数值必须和原数值维度相同，不然会报错。</p>
+<p>3.随机数是序列，这个序列根据算法计算而来。这个算法有参数，给定一个参数就会产生相应的序列，不同的参数产生不同的序列。不指定随机种子时，将按照一个序列(即默认的某一个参数)依次往下生成随机数，所以每次调用random()都生成不同的随机数。当指定随机数种子时，随机种子的参数确定相应的序列(不指定参数的话还是默认序列)，在这个种子作用范围内，调用random()将按照这个序列生成随机数。再次启动程序，即再次进入这个种子时，还按照这个序列从头开始生成随机数。</p>
+<p>4.深拷贝与浅拷贝见参考文献第二条</p>
+<p>5.</p>
+<p><img src="/2020/04/12/numpy%E5%BA%93%E5%AD%A6%E4%B9%A02/Screenshot_2020-04-12-10-19-34-712_tv.danmaku.bil.jpg" alt="Screenshot_2020-04-12-10-19-34-712_tv.danmaku.bil"></p>
+<p><img src="/2020/04/12/numpy%E5%BA%93%E5%AD%A6%E4%B9%A02/Screenshot_2020-04-12-10-20-08-371_tv.danmaku.bil.jpg" alt="Screenshot_2020-04-12-10-20-08-371_tv.danmaku.bil"></p>
+<p>(因为还没有数据，所以没做读取文件操作并绘图，之后会有整合练习，numpy库的基础知识部分就先到这儿 :)     )</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://www.bilibili.com/video/BV1hx411d7jb?p=22" target="_blank" rel="noopener">https://www.bilibili.com/video/BV1hx411d7jb?p=22</a></p>
+<p><a href="https://blog.csdn.net/qq_34493908/article/details/81560546" target="_blank" rel="noopener">https://blog.csdn.net/qq_34493908/article/details/81560546</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/12/numpy%E5%BA%93%E5%AD%A6%E4%B9%A02/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-numpy库学习1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -828,146 +988,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/03/%E7%88%AC%E5%8F%96%E5%89%8D%E7%A8%8B%E6%97%A0%E5%BF%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-爬取豆瓣电影top250" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/">爬取豆瓣电影top250</a>
-    </h1>
-  
-
-		<!--显示阅读次数-->
-		
-        
-        <a href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/" class="archive-article-date">
-  	<time datetime="2020-04-01T11:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="练习用BeautifulSoup爬取豆瓣电影TOP250"><a href="#练习用BeautifulSoup爬取豆瓣电影TOP250" class="headerlink" title="练习用BeautifulSoup爬取豆瓣电影TOP250"></a>练习用BeautifulSoup爬取豆瓣电影TOP250</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># --*-- coding : utf-8 --*--</span></span><br><span class="line"><span class="comment"># --*-- author : LouXM --*--</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Douban</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.url = <span class="string">'https://movie.douban.com/top250'</span></span><br><span class="line">        self.startnum = []</span><br><span class="line">        <span class="keyword">for</span> start_num <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">251</span>, <span class="number">25</span>):</span><br><span class="line">            self.startnum.append(start_num)</span><br><span class="line">        self.header = &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36 Edg/80.0.361.69'</span>&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_top250</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> start <span class="keyword">in</span> self.startnum:</span><br><span class="line">            start = str(start)</span><br><span class="line">            html = requests.get(self.url, params=&#123;<span class="string">'start'</span>: start&#125;, headers=self.header)</span><br><span class="line">            soup = BeautifulSoup(html.text, <span class="string">'html.parser'</span>)</span><br><span class="line">            names = soup.select(<span class="string">'#content &gt; div &gt; div.article &gt; ol &gt; li &gt; div &gt; div.info &gt; div.hd &gt; a &gt; span:nth-child(1)'</span>)</span><br><span class="line">            <span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">                print(name.get_text())</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">        cls = Douban()</span><br><span class="line">        cls.get_top250()</span><br></pre></td></tr></table></figure>
-
-<p>爬取结果：</p>
-<p>肖申克的救赎<br>霸王别姬<br>阿甘正传<br>这个杀手不太冷<br>美丽人生<br>泰坦尼克号<br>千与千寻<br>辛德勒的名单<br>盗梦空间<br>忠犬八公的故事<br>海上钢琴师<br>机器人总动员<br>三傻大闹宝莱坞<br>楚门的世界<br>放牛班的春天<br>星际穿越<br>大话西游之大圣娶亲<br>熔炉<br>疯狂动物城<br>无间道<br>龙猫<br>教父<br>当幸福来敲门<br>怦然心动<br>触不可及<br>蝙蝠侠：黑暗骑士<br>控方证人<br>活着<br>乱世佳人<br>寻梦环游记<br>末代皇帝<br>摔跤吧！爸爸<br>少年派的奇幻漂流<br>指环王3：王者无敌<br>飞屋环游记<br>何以为家<br>十二怒汉<br>鬼子来了<br>天空之城<br>大话西游之月光宝盒<br>哈尔的移动城堡<br>素媛<br>天堂电影院<br>罗马假日<br>闻香识女人<br>辩护人<br>搏击俱乐部<br>哈利·波特与魔法石<br>我不是药神<br>死亡诗社<br>教父2<br>窃听风暴<br>狮子王<br>指环王2：双塔奇兵<br>大闹天宫<br>指环王1：魔戒再现<br>两杆大烟枪<br>美丽心灵<br>饮食男女<br>飞越疯人院<br>猫鼠游戏<br>黑客帝国<br>V字仇杀队<br>钢琴家<br>本杰明·巴顿奇事<br>看不见的客人<br>让子弹飞<br>西西里的美丽传说<br>海豚湾<br>小鞋子<br>拯救大兵瑞恩<br>情书<br>音乐之声<br>穿条纹睡衣的男孩<br>美国往事<br>致命魔术<br>绿皮书<br>七宗罪<br>低俗小说<br>沉默的羔羊<br>海蒂和爷爷<br>蝴蝶效应<br>被嫌弃的松子的一生<br>春光乍泄<br>禁闭岛<br>心灵捕手<br>布达佩斯大饭店<br>阿凡达<br>剪刀手爱德华<br>勇敢的心<br>摩登时代<br>天使爱美丽<br>加勒比海盗<br>喜剧之王<br>致命ID<br>断背山<br>杀人回忆<br>幽灵公主<br>狩猎<br>入殓师<br>阳光灿烂的日子<br>请以你的名字呼唤我<br>重庆森林<br>第六感<br>哈利·波特与死亡圣器(下)<br>小森林 夏秋篇<br>7号房的礼物<br>消失的爱人<br>红辣椒<br>爱在黎明破晓前<br>玛丽和马克思<br>小森林 冬春篇<br>侧耳倾听<br>一一<br>告白<br>大鱼<br>唐伯虎点秋香<br>阳光姐妹淘<br>蝙蝠侠：黑暗骑士崛起<br>射雕英雄传之东成西就<br>倩女幽魂<br>超脱<br>甜蜜蜜<br>驯龙高手<br>萤火之森<br>恐怖直播<br>幸福终点站<br>超能陆战队<br>菊次郎的夏天<br>无人知晓<br>爱在日落黄昏时<br>借东西的小人阿莉埃蒂<br>神偷奶爸<br>怪兽电力公司<br>完美的世界<br>玩具总动员3<br>风之谷<br>血战钢锯岭<br>上帝之城<br>傲慢与偏见<br>时空恋旅人<br>电锯惊魂<br>功夫<br>教父3<br>喜宴<br>谍影重重3<br>英雄本色<br>岁月神偷<br>被解救的姜戈<br>七武士<br>天书奇谭<br>哪吒闹海<br>疯狂原始人<br>人生果实<br>我是山姆<br>心迷宫<br>纵横四海<br>三块广告牌<br>萤火虫之墓<br>真爱至上<br>头号玩家<br>达拉斯买家俱乐部<br>荒蛮故事<br>东邪西毒<br>爆裂鼓手<br>记忆碎片<br>贫民窟的百万富翁<br>釜山行<br>黑天鹅<br>花样年华<br>你的名字。<br>卢旺达饭店<br>忠犬八公物语<br>头脑特工队<br>模仿游戏<br>黑客帝国3：矩阵革命<br>一个叫欧维的男人决定去死<br>雨人<br>你看起来好像很好吃<br>哈利·波特与阿兹卡班的囚徒<br>无敌破坏王<br>未麻的部屋<br>恋恋笔记本<br>冰川时代<br>哈利·波特与密室<br>海街日记<br>新世界<br>海边的曼彻斯特<br>二十二<br>虎口脱险<br>房间<br>恐怖游轮<br>雨中曲<br>人工智能<br>魔女宅急便<br>惊魂记<br>奇迹男孩<br>疯狂的石头<br>海洋<br>罗生门<br>终结者2：审判日<br>燃情岁月<br>爱在午夜降临前<br>魂断蓝桥<br>初恋这件小事<br>穿越时空的少女<br>小偷家族<br>可可西里<br>绿里奇迹<br>2001太空漫游<br>完美陌生人<br>牯岭街少年杀人事件<br>无耻混蛋<br>阿飞正传<br>新龙门客栈<br>香水<br>源代码<br>城市之光<br>谍影重重2<br>谍影重重<br>青蛇<br>猜火车<br>战争之王<br>地球上的星星<br>血钻<br>朗读者<br>浪潮<br>色，戒<br>遗愿清单<br>步履不停<br>彗星来的那一夜<br>大佛普拉斯<br>疯狂的麦克斯4：狂暴之路<br>小萝莉的猴神大叔<br>再次出发之纽约遇见你<br>聚焦<br>驴得水<br>追随<br>东京物语<br>一次别离<br>黑鹰坠落<br>千钧一发<br>我爱你<br>发条橙<br>四个春天<br>网络谜踪<br>E.T. 外星人<br>撞车<br>变脸<br>九品芝麻官</p>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="https://b23.tv/BV1j4411c7ny" target="_blank" rel="noopener">https://b23.tv/BV1j4411c7ny</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E7%88%AC%E5%8F%96%E8%B1%86%E7%93%A3%E7%94%B5%E5%BD%B1top250/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-图片测试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">图片测试</a>
-    </h1>
-  
-
-		<!--显示阅读次数-->
-		
-        
-        <a href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/" class="archive-article-date">
-  	<time datetime="2020-03-17T13:43:06.625Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: hexo 图片测试</p>
-<p>date: 2020-03-17</p>
-<p>tags:</p>
-<hr>
-<h2 id="图片测试"><a href="#图片测试" class="headerlink" title="图片测试"></a>图片测试</h2><p><img src="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/C:%5CWindows%5CSystem32%5Cblog%5Csource%5C_posts%5C%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95%5C1552545166541.jpg" alt="1552545166541"></p>
-<p>图片一直显示不出来，很难受，查了很多方法没能解决，如果这样测试还是失败就先算了qwq</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/17/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/">展开全文 >></a>
         </p>
       
 
